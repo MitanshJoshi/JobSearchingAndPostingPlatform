@@ -1,9 +1,12 @@
 import React from 'react'
+import {ClipLoader} from "react-spinners"
+
+
 
 const Spinner = () => {
   return (
-    <div>
-      spinner
+    <div className='flex justify-center items-center min-h-screen'>
+      <ClipLoader/>
     </div>
   )
 }

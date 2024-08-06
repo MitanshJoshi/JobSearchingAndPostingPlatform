@@ -65,7 +65,7 @@ const Register = () => {
 
   useEffect(() => {
     if (error) {
-        console.log(error);
+        // console.log(error);
         
       toast.error(error);
       dispatch(clearAllUserErrors());
@@ -73,7 +73,7 @@ const Register = () => {
     if (isAuthenticated) {
       navigate("/");
     }
-  }, [error, isAuthenticated, loading, dispatch, message, navigate]);
+  }, [error, isAuthenticated, loading, dispatch, message]);
 
   return (
     <div className=" flex items-center justify-center mt-10">
@@ -220,10 +220,17 @@ const Register = () => {
           )}
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-black hover:text-white"
+            className="w-full mb-4 py-2 px-4 bg-primary text-white rounded-md hover:bg-black hover:text-white"
             disabled={loading}
           >
             {loading ? "Registering..." : "Register"}
+          </button>
+          <button
+            type="submit"
+            className="w-full py-2 px-4  text-primary border-primary border-[2px] rounded-md hover:bg-black hover:text-white"
+            onClick={()=>navigate("/login")}
+          >
+            Login
           </button>
         </form>
       </div>

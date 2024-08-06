@@ -1,6 +1,7 @@
 import React from 'react'
 import Topfields from '../components/Topfields'
 import HowItWorks from '../components/HowItWorks'
+import Footer from '../components/Footer'
 
 const Homepage = () => {
   return (
@@ -14,6 +15,7 @@ const Homepage = () => {
       </div>
       <Topfields />
       <HowItWorks/>
+      <Footer/>
     </>
   )
 }
