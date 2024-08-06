@@ -44,7 +44,7 @@ const userSlice = createSlice({
 export const register =(data)=>async(dispatch)=>{
     dispatch(userSlice.actions.registerRequest());
     try {
-        const response = await axios.post("http://localhost:4000/api/V1/user/register",data,{
+        const response = await axios.post("https://job-backend-5rgd.onrender.com/api/V1/user/register",data,{
             withCredentials:true,
             headers:{
                 "Content-Type":"multipart/form-data",
