@@ -4,7 +4,7 @@ import cors from "cors";
 import userRouter from "./routes/userRouter.js";
 import jobRouter from "./routes/jobRouter.js";
 import applicationRouter from "./routes/applicationRouter.js";
-
+import mongoose from "mongoose"
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/error.js";
 import fileUpload from "express-fileupload";
