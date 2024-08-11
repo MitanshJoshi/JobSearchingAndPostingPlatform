@@ -20,6 +20,9 @@ app.use(cors({
 })
 );
 
+console.log(process.env.MONGO_URI);
+
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
