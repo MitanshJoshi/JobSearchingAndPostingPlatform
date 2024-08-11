@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-export const connection = () => {
-    mongoose.connect(process.env.MONGO_URI, {
+export const connection = async() => {
+    await mongoose.connect(process.env.MONGO_URI, {
         dbName: "JOB_PORTAL",
         useNewUrlParser: true,
         useUnifiedTopology: true,
