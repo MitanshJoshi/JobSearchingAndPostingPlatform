@@ -64,14 +64,13 @@ const Register = () => {
   };
 
   useEffect(() => {
+    if(isAuthenticated)
+    {
+      navigate("/")
+    }
     if (error) {
-        // console.log(error);
-        
       toast.error(error);
       dispatch(clearAllUserErrors());
-    }
-    if (isAuthenticated) {
-      navigate("/");
     }
   }, [error, isAuthenticated, loading, dispatch, message]);
 

@@ -47,6 +47,13 @@ const userSlice = createSlice({
             state.error=null,
             state.message=action.payload.message
         },
+        loginFailed(state,action){
+            state.loading=false,
+            state.isAuthenticated=false,
+            state.user={},
+            state.error=action.payload,
+            state.message=null
+        },
         logoutSuccess(state,action){
             state.isAuthenticated=false,
             state.user={},
@@ -84,11 +91,10 @@ const userSlice = createSlice({
     },
 });
 
-
 export const register =(data)=>async(dispatch)=>{
     dispatch(userSlice.actions.registerRequest());
     try {
-        const response = await axios.post("http://localhost:4000/api/V1/user/register",data,{
+        const response = await axios.post("https://job-backend-5rgd.onrender.com/api/V1/user/register",data,{
             withCredentials:true,
             headers:{
                 "Content-Type":"multipart/form-data",
@@ -103,7 +109,7 @@ export const register =(data)=>async(dispatch)=>{
 export const login =(data)=>async(dispatch)=>{
     dispatch(userSlice.actions.loginRequest());
     try {
-        const response = await axios.post("http://localhost:4000/api/V1/user/login",data,{
+        const response = await axios.post("https://job-backend-5rgd.onrender.com/api/V1/user/login",data,{
             withCredentials:true,
             headers:{
                 "Content-Type":"application/json"
@@ -118,10 +124,10 @@ export const login =(data)=>async(dispatch)=>{
 export const getuser =()=>async(dispatch)=>{
     dispatch(userSlice.actions.loginRequest());
     try {
-        const response = await axios.get("http://localhost:4000/api/V1/user/getuser",{
+        const response = await axios.get("https://job-backend-5rgd.onrender.com/api/V1/user/getuser",{
             withCredentials:true,
         });
-        dispatch(userSlice.actions.fetchUserSuccess(response.data));
+        dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
         dispatch(userSlice.actions.clearAllErrors());
     } catch (error) {
         dispatch(userSlice.actions.fetchUserFailed(error.response.data.message));
@@ -129,7 +135,7 @@ export const getuser =()=>async(dispatch)=>{
 }
 export const logout =()=>async(dispatch)=>{
     try {
-        const response = await axios.get("http://localhost:4000/api/V1/user/logout",{
+        const response = await axios.get("https://job-backend-5rgd.onrender.com/api/V1/user/logout",{
             withCredentials:true,
         });
         dispatch(userSlice.actions.logoutSuccess(response.data));

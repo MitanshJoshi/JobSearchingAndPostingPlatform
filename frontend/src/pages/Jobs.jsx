@@ -3,20 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { clearAllJobErrors, fetchJobs } from '../store/slices/jobSlice';
 import Spinner from '../components/Spinner'; 
+import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
-const cityOptions = [
-  'Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Ahmedabad', 'Chennai', 'Kolkata', 'Pune', 'Jaipur', 'Surat',
-  'Kanpur', 'Nagpur', 'Indore', 'Bhopal', 'Vadodara', 'Coimbatore', 'Patna', 'Agra', 'Meerut', 'Varanasi', 'Nashik'
-];
+  const cityOptions = [
+    'Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Ahmedabad', 'Chennai', 'Kolkata', 'Pune', 'Jaipur', 'Surat',
+    'Kanpur', 'Nagpur', 'Indore', 'Bhopal', 'Vadodara', 'Coimbatore', 'Patna', 'Agra', 'Meerut', 'Varanasi', 'Nashik'
+  ];
 
-const nicheOptions = [
-  'Software Engineering', 'Data Science', 'Web Development', 'Cybersecurity', 'Machine Learning', 'AI', 'DevOps', 'Cloud Computing', 'Blockchain', 'Mobile Development'
-];
+  const nicheOptions = [
+    'Software Engineering', 'Data Science', 'Web Development', 'Cybersecurity', 'Machine Learning', 'AI', 'DevOps', 'Cloud Computing', 'Blockchain', 'Mobile Development'
+  ];
 
 const Jobs = () => {
   const [city, setCity] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [niche, setNiche] = useState('');
+  const [selectedniche, setSelectedNiche] = useState('');
   const [searchedKeyword, setSearchedKeyword] = useState('');
   const { jobs, loading, error } = useSelector((state) => state.jobs);
   const dispatch = useDispatch();
@@ -35,41 +38,46 @@ const Jobs = () => {
   };
 
   return (
+    <>
     <div className="container mx-auto p-4 mt-16">
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="w-full sm:w-1/4 bg-primary3 p-4 rounded-md">
           <h2 className="text-lg font-semibold mb-4">Filter by City</h2>
-          {cityOptions.map((cityOption, index) => (
+          {cityOptions.map((city, index) => (
             <div key={index} className="mb-2">
               <input
                 type="radio"
-                id={`city-${index}`}
+                id={city}
                 name="city"
-                value={cityOption}
-                checked={selectedCity === cityOption}
+                value={city}
+                checked={selectedCity === city}
                 onChange={(e) => {
                   setCity(e.target.value);
                   setSelectedCity(e.target.value);
                 }}
                 className="mr-2"
               />
-              <label htmlFor={`city-${index}`} className="text-gray-700">{cityOption}</label>
+              <label htmlFor={city}>{city}</label>
             </div>
           ))}
           
           <h2 className="text-lg font-semibold mt-6 mb-4">Filter by Niche</h2>
-          {nicheOptions.map((nicheOption, index) => (
+          {nicheOptions.map((niche, index) => (
             <div key={index} className="mb-2">
               <input
                 type="radio"
-                id={`niche-${index}`}
+                id={niche}
                 name="niche"
-                value={nicheOption}
-                checked={niche === nicheOption}
-                onChange={(e) => setNiche(e.target.value)}
+                value={niche}
+                checked={selectedniche === niche}
+                onChange={
+                  (e) => {
+                  setNiche(e.target.value);
+                  setSelectedNiche(niche)}
+                }
                 className="mr-2"
               />
-              <label htmlFor={`niche-${index}`} className="text-gray-700">{nicheOption}</label>
+               <label htmlFor={niche}>{niche}</label>
             </div>
           ))}
         </div>
@@ -109,9 +117,9 @@ const Jobs = () => {
                      <p className="text-gray-700 mb-2">Niche: <span className="font-medium">{job.jobNiche}</span></p>
                      <p className="text-gray-700 mb-2">Salary: <span className="font-medium">₹{job.salary}</span></p>
                      <div className="text-gray-500 text-sm flex justify-between items-center">Posted on: {new Date(job.jobPostedOn).toLocaleDateString()}
-                      <button className='text-black bg-primary p-2 rounded-lg hover:text-white hover:bg-black'>
+                      <Link to={`/post/application/${job._id}`} className='text-black bg-primary p-2 rounded-lg hover:text-white hover:bg-black'>
                         Apply Now
-                      </button>
+                      </Link>
                      </div>
                    </li>
                   ))}
@@ -124,6 +132,8 @@ const Jobs = () => {
         </div>
       </div>
     </div>
+      <Footer/>
+    </>
   );
 };
 

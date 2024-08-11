@@ -7,6 +7,7 @@ import { Application } from "../models/applicationSchema.js"
 import { v2 as cloudinary } from "cloudinary";
 
 import { Job } from "../models/jobSchema.js"
+
 import app from "../app.js";
 
 export const postApplication = catchAsyncError(async (req, res, next) => {

@@ -14,6 +14,8 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginPage from './pages/LoginPage'
 import { useDispatch } from 'react-redux'
 import { getuser } from './store/slices/userSlice'
+import PostApplicationComp from './pages/PostApplication'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,7 +33,9 @@ function App() {
         <Route index element={<Homepage/>}></Route>
         <Route path="/jobs" element={<Jobs/>}/>        
         <Route path="/register" element={<Register/>}/>  
+        <Route path="/dashboard" element={<Dashboard/>}/>  
         <Route path="/login" element={<LoginPage/>}/>      
+        <Route path="/post/application/:id" element={<PostApplicationComp/>}/>      
         </Route>
         <Route path="*" element={<NotFound/>}/>
       </Routes>

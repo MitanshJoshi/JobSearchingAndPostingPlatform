@@ -25,13 +25,16 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    if(error){
-        toast.error(error)
-        dispatch(clearAllUserErrors())
-    }
     if(isAuthenticated)
     {
-        navigate("/")
+      navigate("/")
+    }
+    if(error){
+        toast.error(error,{
+          position:"bottom-right",
+          autoClose:1000
+        })
+        dispatch(clearAllUserErrors())
     }
   }, [isAuthenticated,dispatch,error,message])
   

@@ -108,7 +108,7 @@ export const fetchJobs =
   async (dispatch) => {
     try {
       dispatch(jobSlice.actions.requestForAllJobs());
-      let link = "http://localhost:4000/api/v1/job/getall?";
+      let link = "https://job-backend-5rgd.onrender.com/api/v1/job/getall?";
       let queryParams = [];
       if (searchKeyword) {
         queryParams.push(`searchKeyword=${searchKeyword}`);
@@ -133,7 +133,7 @@ export const fetchSingleJob = (jobId) => async (dispatch) => {
   dispatch(jobSlice.actions.requestForSingleJob());
   try {
     const response = await axios.get(
-      `http://localhost:4000/api/v1/job/get/${jobId}`,
+      `https://job-backend-5rgd.onrender.com/api/v1/job/get/${jobId}`,
       { withCredentials: true }
     );
     dispatch(jobSlice.actions.successForSingleJob(response.data.job));
@@ -147,7 +147,7 @@ export const postJob = (data) => async (dispatch) => {
   dispatch(jobSlice.actions.requestForPostJob());
   try {
     const response = await axios.post(
-      `http://localhost:4000/api/v1/job/post`,
+      `https://job-backend-5rgd.onrender.com/api/v1/job/postjob`,
       data,
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -162,10 +162,12 @@ export const getMyJobs = () => async (dispatch) => {
   dispatch(jobSlice.actions.requestForMyJobs());
   try {
     const response = await axios.get(
-      `http://localhost:4000/api/v1/job/getmyjobs`,
+      `https://job-backend-5rgd.onrender.com/api/v1/job/getmyjobs`,
       { withCredentials: true }
     );
-    dispatch(jobSlice.actions.successForMyJobs(response.data.myJobs));
+    console.log("response",response);
+    
+    dispatch(jobSlice.actions.successForMyJobs(response.data.Myjobs));
     dispatch(jobSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(jobSlice.actions.failureForMyJobs(error.response.data.message));
@@ -176,7 +178,7 @@ export const deleteJob = (id) => async (dispatch) => {
   dispatch(jobSlice.actions.requestForDeleteJob());
   try {
     const response = await axios.delete(
-      `http://localhost:4000/api/v1/job/delete/${id}`,
+      `https://job-backend-5rgd.onrender.com/api/v1/job/delete/${id}`,
       { withCredentials: true }
     );
     dispatch(jobSlice.actions.successForDeleteJob(response.data.message));
