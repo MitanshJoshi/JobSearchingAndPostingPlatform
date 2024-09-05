@@ -15,13 +15,11 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: ["https://job-frontend-theta.vercel.app"],
+    origin: [process.env.FRONTEND_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
-
-
 
 console.log(process.env.MONGO_URI);
 
