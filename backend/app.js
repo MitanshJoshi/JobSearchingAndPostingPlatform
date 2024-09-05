@@ -15,11 +15,12 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: ["https://job-frontend-cki1.onrender.com"], // Allow frontend URL
+    origin: ["https://job-frontend-cki1.onrender.com", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // Allow credentials (cookies, headers)
+    credentials: true,
   })
 );
+
 
 
 console.log(process.env.MONGO_URI);
