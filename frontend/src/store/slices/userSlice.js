@@ -112,7 +112,8 @@ export const login =(data)=>async(dispatch)=>{
         const response = await axios.post("https://job-api-five.vercel.app/api/V1/user/login",data,{
             withCredentials:true,
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Access-Control-Allow-Origin":"*"
             }
         });
         dispatch(userSlice.actions.loginSuccess(response.data));
