@@ -15,7 +15,7 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: ["https://job-frontend-cki1.onrender.com", "http://localhost:3000"],
+    origin: ["https://job-frontend-theta.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
