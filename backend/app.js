@@ -4,7 +4,7 @@ import cors from "cors";
 import userRouter from "./routes/userRouter.js";
 import jobRouter from "./routes/jobRouter.js";
 import applicationRouter from "./routes/applicationRouter.js";
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/error.js";
 import fileUpload from "express-fileupload";
@@ -15,11 +15,12 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: ["https://job-frontend-cki1.onrender.com"], // Allow frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    credentials: true, // Allow credentials (cookies, headers)
   })
 );
+
 
 console.log(process.env.MONGO_URI);
 
