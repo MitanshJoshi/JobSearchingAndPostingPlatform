@@ -48,7 +48,7 @@ const updateProfileSlice = createSlice({
 export const updateProfile=(data)=>async(dispatch)=>{
     dispatch(updateProfileSlice.actions.updateProfileRequest());
     try {
-        const response = await axios.put("https://job-backend-5rgd.onrender.com/api/V1/user/update/profile",data,{
+        const response = await axios.put("https://job-api-five.vercel.app/api/V1/user/update/profile",data,{
             withCredentials:true,
             headers:{
                 "Content-Type":"multipart/form-data"
@@ -65,7 +65,7 @@ export const updateProfile=(data)=>async(dispatch)=>{
 export const updatePassword=(data)=>async (dispatch)=>{
     dispatch(updateProfileSlice.actions.updatePasswordRequest());
     try {
-        const response = await axios.put("https://job-backend-5rgd.onrender.com/api/V1/user/update/password",data,{
+        const response = await axios.put("https://job-api-five.vercel.app/api/V1/user/update/password",data,{
             withCredentials:true,
         });
         dispatch(updateProfileSlice.actions.updatePasswordSuccess());
