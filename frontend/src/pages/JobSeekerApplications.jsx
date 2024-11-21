@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
   clearAllApplicationErrors,
+  DeleteApplications,
   fetchEmployerApplication,
+  fetchUserApplication,
   resetApplicationSlice,
 } from "../store/slices/applicationSlice";
 import Spinner from "../components/Spinner";
@@ -25,6 +27,11 @@ const JobSeekerApplications = () => {
 
     dispatch(fetchEmployerApplication());
   }, [dispatch, error, message]);
+
+  const handleDeleteApplication = (id) => {
+    dispatch(DeleteApplications(id));
+    dispatch(fetchEmployerApplication());
+  };
 
   return (
     <div>

@@ -73,7 +73,7 @@ const applicationSlice = createSlice({
 });
 
 
-export const DeleteApplications =(id)=>async (dispatch)=>{
+export const DeleteApplications =(id) => async (dispatch) => {
   dispatch(applicationSlice.actions.requestForDeleteApplication());
   try {
     const response = await axios.delete(`https://job-backend-5rgd.onrender.com/api/V1/application/delete/${id}`,{
@@ -84,6 +84,7 @@ export const DeleteApplications =(id)=>async (dispatch)=>{
     dispatch(applicationSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(applicationSlice.actions.failureForDeleteApplication(error.response.data.message));
+    dispatch(applicationSlice.actions.clearAllErrors());
     
   }
 }
