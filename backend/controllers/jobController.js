@@ -94,6 +94,7 @@ export const getAllJobs = catchAsyncError(async (req, res, next) => {
     count: jobs.length,
   });
 });
+
 export const getMyJobs = catchAsyncError(async (req, res, next) => {
   const Myjobs = await Job.find({ postedBy: req.user._id });
   res.status(200).json({

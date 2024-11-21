@@ -29,7 +29,7 @@ const Footer = () => {
             <h2 className="text-xl font-bold mb-2">Contact Information</h2>
             <p className="text-sm">Gift City Center</p>
             <p className="text-sm">Gandhinagar, Gujarat, 392330</p>
-            <p className="text-sm">Email: info@jobportal.com</p>
+            <p className="text-sm">Email: info@CareerConnect.com</p>
             <p className="text-sm">Phone: +91 8799103491</p>
           </div>
           <div className="w-full md:w-1/4 flex flex-col items-center ">
@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 text-center text-sm">
-          &copy; 2024 Job Portal. All rights reserved.
+          &copy; 2024 CareerConnect. All rights reserved.
         </div>
       </div>
     </footer>

@@ -9,16 +9,16 @@ import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/error.js";
 import fileUpload from "express-fileupload";
 import { newsLetterCron } from "./automation/automationCron.js";
+import { connection } from "./database/connection.js";
 const app = express();
 
 config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: ["https://job-frontend-theta.vercel.app"], // Frontend URL
+    origin: process.env.FRONTEND_URL, 
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-     // Allow specific headers
   })
 );
 
@@ -41,18 +41,7 @@ app.use("/api/V1/user", userRouter);
 app.use("/api/V1/job", jobRouter);
 app.use("/api/V1/application", applicationRouter);
 newsLetterCron();
-mongoose
-  .connect("mongodb://127.0.0.1:27017/JOB_PORTAL", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 50000,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Failed to connect:", err.message);
-  });
+connection();
 app.use(errorMiddleware);
 
 export default app;
