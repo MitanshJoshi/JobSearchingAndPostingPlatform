@@ -76,7 +76,7 @@ const applicationSlice = createSlice({
 export const DeleteApplications =(id)=>async (dispatch)=>{
   dispatch(applicationSlice.actions.requestForDeleteApplication());
   try {
-    const response = await axios.delete(`http://localhost:4000/api/V1/application/delete/${id}`,{
+    const response = await axios.delete(`https://job-backend-5rgd.onrender.com/api/V1/application/delete/${id}`,{
       withCredentials:true
     });
     dispatch(applicationSlice.actions.successForDeleteApplication());
@@ -91,7 +91,7 @@ export const fetchEmployerApplication = () => async (dispatch) => {
   dispatch(applicationSlice.actions.requestForAllApplications());
   try {
     const response = await axios.get(
-      "http://localhost:4000/api/V1/application/employer/getall",
+      "https://job-backend-5rgd.onrender.com/api/V1/application/employer/getall",
       {
         withCredentials: true,
        
@@ -107,7 +107,7 @@ export const fetchUserApplication = () => async (dispatch) => {
   dispatch(applicationSlice.actions.requestForMyApplications());
   try {
     const response = await axios.get(
-      "http://localhost:4000/api/V1/application/jobseeker/getall",
+      "https://job-backend-5rgd.onrender.com/api/V1/application/jobseeker/getall",
       {
         withCredentials: true,
        
@@ -123,7 +123,7 @@ export const postApplication = (data, JobId) => async (dispatch) => {
   dispatch(applicationSlice.actions.requestForPostApplication());
   try {
     const response = await axios.post(
-      `http://localhost:4000/api/V1/application/post/${JobId}`,
+      `https://job-backend-5rgd.onrender.com/api/V1/application/post/${JobId}`,
       data,
       {
         withCredentials: true,
