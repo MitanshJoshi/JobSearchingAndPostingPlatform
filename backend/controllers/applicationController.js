@@ -32,6 +32,7 @@ export const postApplication = catchAsyncError(async (req, res, next) => {
   const isApplied = await Application.findOne({
     "jobInfo.jobId": id,
     "jobSeekerInfo.id": req.user._id,
+    "deletedBy.jobSeeker": false,
   });
 
   if (isApplied) {

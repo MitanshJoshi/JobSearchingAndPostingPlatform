@@ -80,6 +80,7 @@ export const DeleteApplications =(id)=>async (dispatch)=>{
       withCredentials:true
     });
     dispatch(applicationSlice.actions.successForDeleteApplication());
+    dispatch(applicationSlice.actions.fetchUserApplication());
     dispatch(applicationSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(applicationSlice.actions.failureForDeleteApplication(error.response.data.message));
