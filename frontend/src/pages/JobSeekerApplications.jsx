@@ -5,7 +5,6 @@ import {
   clearAllApplicationErrors,
   DeleteApplications,
   fetchEmployerApplication,
-  fetchUserApplication,
   resetApplicationSlice,
 } from "../store/slices/applicationSlice";
 import Spinner from "../components/Spinner";
